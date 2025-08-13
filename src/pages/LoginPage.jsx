@@ -3,29 +3,31 @@ import InputField from "../components/InputField";
 
 const LoginPage = () => {
   return (
-    <div className="w-full min-h-screen bg-white flex flex-row p-4">
-      <div className="w-[50%] flex flex-col items-center justify-between py-7">
-        <h1 className="text-4xl text-black font-bold tracking-wide font-ubuntu">
+    <div className="max-w-screen-2xl mx-auto w-full min-h-screen bg-white flex flex-row p-4">
+      <div className="w-[50%] flex flex-col py-7">
+        <h1 className="text-4xl text-left mb-[160px] text-black font-bold tracking-wide font-ubuntu pl-7">
           trckr.
         </h1>
-        <div className="text-black font-montserrat flex flex-col gap-10 items-center">
-          <div className="flex flex-col gap-2 items-center">
-            <h1 className="text-5xl font-normal">Get Started</h1>
-            <p className="text-lg font-light">
-              Just a few details and we’re ready to go.
-            </p>
+        <div className="flex flex-col justify-between h-full">
+          <div className="text-black font-montserrat flex flex-col gap-8 items-center">
+            <div className="flex flex-col gap-2 items-center">
+              <h1 className="text-5xl font-normal">Get Started</h1>
+              <p className="text-lg font-light">
+                Just a few details and we’re ready to go.
+              </p>
+            </div>
+            <div className="">
+              <InputField />
+            </div>
           </div>
           <div className="">
-            <InputField />
+            <h1 className="text-gray-700 text-sm font-montserrat text-center bottom-0">
+              ©2025 Jhon Rommel Golandrina. All rights reserved.
+            </h1>
           </div>
         </div>
-        <div className="">
-          <h1 className="text-gray-700 text-sm font-montserrat">
-            ©2025 Jhon Rommel Golandrina. All rights reserved.
-          </h1>
-        </div>
       </div>
-      <div className="w-[50%] bg-[url(/src/assets/flat-mountains.svg)] bg-no-repeat bg-cover bg-center rounded-2xl rounded-bl-[100px]"></div>
+      <div className="w-[50%] bg-[url(/src/assets/image1.avif)] bg-no-repeat bg-center rounded-2xl rounded-bl-[100px]"></div>
     </div>
   );
 };
