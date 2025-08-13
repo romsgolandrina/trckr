@@ -1,0 +1,37 @@
+import React from "react";
+
+const InputField = () => {
+  return (
+    <div className="flex flex-col gap-4">
+      <label className="flex flex-col gap-1">
+        <span className="text-sm">Full Name</span>
+        <input
+          type="text"
+          placeholder="e.g., John Doe"
+          className="input input-md w-[450px] bg-gray-200 focus:border-gray-400 focus:outline-none rounded-lg"
+        />
+      </label>
+      <label className="flex flex-col gap-1">
+        <span className="text-sm">Position Applied For</span>
+        <input
+          type="text"
+          placeholder="e.g., Front-End Developer"
+          className="input input-md w-[450px] bg-gray-200 focus:border-gray-400 focus:outline-none rounded-lg"
+        />
+      </label>
+      <label className="flex flex-col gap-1 mb-10">
+        <span className="text-sm">Target Company (Optional)</span>
+        <input
+          type="text"
+          placeholder="e.g., Roms Corporation"
+          className="input input-md w-[450px] bg-gray-200 focus:border-gray-400 focus:outline-none rounded-lg"
+        />
+      </label>
+      <button className="btn btn-md w-[450px] rounded-lg bg-black">
+        Start Tracking
+      </button>
+    </div>
+  );
+};
+
+export default InputField;
