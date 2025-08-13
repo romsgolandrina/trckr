@@ -16,11 +16,11 @@ const LoginPage = () => {
                 Just a few details and we’re ready to go.
               </p>
             </div>
-            <div className="">
+            <div>
               <InputField />
             </div>
           </div>
-          <div className="">
+          <div>
             <h1 className="text-gray-700 text-sm font-montserrat text-center bottom-0">
               ©2025 Jhon Rommel Golandrina. All rights reserved.
             </h1>
