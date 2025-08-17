@@ -1,11 +1,13 @@
 import React from "react";
 import InputField from "../components/InputField";
+import image1 from "../assets/image1.avif";
 
 const LoginPage = () => {
   return (
-    <div className="max-w-screen-2xl mx-auto w-full min-h-screen bg-white flex flex-row p-4">
+    <div className="max-w-screen-2xl mx-auto w-full min-h-screen bg-white flex flex-row p-4 gap-12">
+      {/* Left section of the page */}
       <div className="w-[50%] flex flex-col py-7">
-        <h1 className="text-4xl text-left mb-[160px] text-black font-bold tracking-wide font-ubuntu pl-7">
+        <h1 className="text-4xl text-left mb-[165px] text-black font-bold tracking-wide font-ubuntu pl-7">
           trckr.
         </h1>
         <div className="flex flex-col justify-between h-full">
@@ -27,7 +29,10 @@ const LoginPage = () => {
           </div>
         </div>
       </div>
-      <div className="w-[50%] bg-[url(/src/assets/image1.avif)] bg-no-repeat bg-center rounded-2xl rounded-bl-[100px]"></div>
+      {/* Right section of the page*/}
+      <div className="w-[50%] bg-white flex flex-col items-center justify-center">
+        <img src={image1} alt="vacants" className="object-cover" />
+      </div>
     </div>
   );
 };
