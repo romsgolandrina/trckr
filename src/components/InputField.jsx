@@ -1,6 +1,10 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const InputField = () => {
+  const navigate = useNavigate();
+  const handleStartTracking = () => navigate("/dashboard");
+
   return (
     <div className="flex flex-col gap-4 transition-all duration-500 ease-in-out">
       <label className="flex flex-col gap-1">
@@ -28,8 +32,8 @@ const InputField = () => {
         />
       </label>
       <button
-        // onClick={handleStartTracking}
-        className="btn btn-md w-[450px] rounded-lg bg-black border-0 hover:bg-gray-800"
+        onClick={handleStartTracking}
+        className="btn btn-md w-[450px] rounded-lg bg-[#1B2122] border-0 hover:bg-[#384244]"
       >
         Start Tracking
       </button>
