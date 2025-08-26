@@ -1,33 +1,48 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { useUser } from "../context/UserInput";
 
 const InputField = () => {
+  const { userData, setUserData } = useUser();
+  const handleChange = (e) => {
+    setUserData({ ...userData, [e.target.name]: e.target.value });
+  };
+
   const navigate = useNavigate();
   const handleStartTracking = () => navigate("/dashboard");
 
   return (
     <div className="flex flex-col gap-4 transition-all duration-500 ease-in-out">
       <label className="flex flex-col gap-1">
-        <span className="text-sm">Full Name</span>
+        <span className="text-sm">First Name</span>
         <input
+          name="firstName"
+          value={userData.firstName}
+          onChange={handleChange}
           type="text"
-          placeholder="e.g., John Doe"
+          placeholder="e.g., John"
           className="input input-md w-[450px] bg-gray-200 focus:border-gray-400 focus:outline-none rounded-lg"
         />
       </label>
       <label className="flex flex-col gap-1">
-        <span className="text-sm">Position Applied For</span>
+        <span className="text-sm">Last Name</span>
         <input
+          name="lastName"
+          value={userData.lastName}
+          onChange={handleChange}
           type="text"
-          placeholder="e.g., Front-End Developer"
+          placeholder="e.g., Doe"
           className="input input-md w-[450px] bg-gray-200 focus:border-gray-400 focus:outline-none rounded-lg"
         />
       </label>
       <label className="flex flex-col gap-1 mb-10">
-        <span className="text-sm">Target Company (Optional)</span>
+        <span className="text-sm">Position Applied For</span>
         <input
+          name="position"
+          value={userData.position}
+          onChange={handleChange}
           type="text"
-          placeholder="e.g., Roms Corporation"
+          placeholder="e.g., Front-End Developer"
           className="input input-md w-[450px] bg-gray-200 focus:border-gray-400 focus:outline-none rounded-lg"
         />
       </label>

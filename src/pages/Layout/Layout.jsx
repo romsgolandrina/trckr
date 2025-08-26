@@ -7,6 +7,7 @@ import {
   MdOutlineBrightness5,
   MdOutlineBrightness2,
 } from "react-icons/md";
+import { useUser } from "../../context/UserInput";
 
 const Layout = () => {
   const NavLinks = [
@@ -14,6 +15,8 @@ const Layout = () => {
     { label: "Application", path: "/application", icon: MdBallot },
     { label: "Resources", path: "/resources", icon: MdBorderColor },
   ];
+
+  const { userData } = useUser();
 
   return (
     <div className="w-full h-screen transition-all duration-300 bg-[#fefffe]">
@@ -42,19 +45,17 @@ const Layout = () => {
             </ul>
           </div>
           <div className="flex flex-col">
+            {/* Divider */}
             <div className="my-8 border-t-2 border-neutral-100" />
-            <div className="flex flex-row gap-4 items-center justify-center">
-              <div class="flex flex-row items-center gap-2">
-                <img
-                  src="https://img.daisyui.com/images/profile/demo/yellingcat@192.webp"
-                  className="rounded-full w-14"
-                />
-                <div className="flex flex-col text-sm text-[#222222] font-montserrat">
-                  <h1 className="text-[#222222]">John Doe</h1>
-                  <p className="text-neutral-400">Front-end Developer</p>
-                </div>
+            <div className="flex flex-row items-center justify-between px-4">
+              <div className="flex flex-col text-sm text-[#222222] font-montserrat">
+                <h1 className="text-[#222222]">
+                  {userData.firstName}
+                  {userData.lastName}
+                </h1>
+                <p className="text-neutral-400">{userData.position}</p>
               </div>
-              <label className="swap swap-rotate text-[#222222]">
+              <label className="swap swap-rotate text-[#222222] rounded-lg p-2 border-1 border-neutral-200 hover:bg-neutral-200">
                 {/* this hidden checkbox controls the state */}
                 <input type="checkbox" />
 
@@ -70,7 +71,7 @@ const Layout = () => {
         <div className="flex-1 h-full flex flex-col bg-[#fafbfb] py-6 px-8 gap-4 overflow-auto">
           <div className=" font-montserrat">
             <h1 className="text-4xl text-[#222222] font-bold">
-              Good morning, John👋
+              Good morning, {userData.firstName}👋
             </h1>
             <p className="text-lg text-neutral-400">
               Welcome to your jobs dashboard
