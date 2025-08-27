@@ -50,7 +50,7 @@ const Layout = () => {
             <div className="flex flex-row items-center justify-between px-4">
               <div className="flex flex-col text-sm text-[#222222] font-montserrat">
                 <h1 className="text-[#222222]">
-                  {userData.firstName}
+                  {userData.firstName}&nbsp;
                   {userData.lastName}
                 </h1>
                 <p className="text-neutral-400">{userData.position}</p>

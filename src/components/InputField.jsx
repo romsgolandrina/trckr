@@ -1,15 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useUser } from "../context/UserInput";
 
 const InputField = () => {
   const { userData, setUserData } = useUser();
+  const [error, setError] = useState("");
+  const navigate = useNavigate();
+
   const handleChange = (e) => {
     setUserData({ ...userData, [e.target.name]: e.target.value });
+    setError("");
   };
 
-  const navigate = useNavigate();
-  const handleStartTracking = () => navigate("/dashboard");
+  const handleStartTracking = () => {
+    if (!userData.firstName || !userData.lastName || !userData.position) {
+      setError("Please fill in all fields");
+      return;
+    }
+    navigate("/dashboard");
+  };
 
   return (
     <div className="flex flex-col gap-4 transition-all duration-500 ease-in-out">
@@ -46,6 +55,11 @@ const InputField = () => {
           className="input input-md w-[450px] bg-gray-200 focus:border-gray-400 focus:outline-none rounded-lg"
         />
       </label>
+      {error && (
+        <span className="bg-amber-100 text-red-500 text-sm py-2 px-4 border-1 border-neutral-200 rounded-lg font-montserrat font-semibold">
+          {error}
+        </span>
+      )}
       <button
         onClick={handleStartTracking}
         className="btn btn-md w-[450px] rounded-lg bg-[#1B2122] border-0 hover:bg-[#384244]"
