@@ -56,7 +56,7 @@ const InputField = () => {
         />
       </label>
       {error && (
-        <span className="bg-amber-100 text-red-500 text-sm py-2 px-4 border-1 border-neutral-200 rounded-lg font-montserrat font-semibold">
+        <span className="bg-amber-100 text-red-500 text-sm py-2 px-4 border-1 border-neutral-200 rounded-lg font-montserrat">
           {error}
         </span>
       )}
