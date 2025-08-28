@@ -40,8 +40,10 @@ const Layout = () => {
             <h1 className="text-5xl text-center text-[#222222] font-ubuntu font-bold">
               trckr.
             </h1>
+
             {/* Divider */}
             <div className="my-10 border-t-2 border-neutral-100" />
+
             {/* Navigation Links */}
             <ul className="text-sm text-[#222222] flex flex-col gap-4">
               {NavLinks.map(({ label, path, logo: Logo }) => (
@@ -59,8 +61,10 @@ const Layout = () => {
           <div className="flex flex-col">
             {/* Divider */}
             <div className="my-8 border-t-2 border-neutral-100" />
+
             <div className="flex flex-row items-center justify-between px-4">
               <div className="flex flex-col text-sm text-[#222222] font-montserrat">
+                {/* Users Name and desired Position */}
                 <div
                   className="tooltip"
                   data-tip={`${userData.firstName} ${userData.lastName}`}
@@ -72,6 +76,7 @@ const Layout = () => {
                 </div>
                 <p className="text-neutral-400">{userData.position}</p>
               </div>
+              {/* Dark Mode Switch */}
               <label className="swap swap-rotate text-[#222222] rounded-lg p-2 border-1 border-neutral-200 hover:bg-neutral-200">
                 {/* this hidden checkbox controls the state */}
                 <input type="checkbox" />

@@ -31,7 +31,12 @@ const LoginPage = () => {
       </div>
       {/* Right section of the page*/}
       <div className="w-[50%] bg-white flex flex-col items-center justify-center">
-        <img src={image1} alt="vacants" className="object-cover" />
+        <img
+          src={image1}
+          alt="vacants"
+          className="object-cover"
+          loading="lazy"
+        />
       </div>
     </div>
   );
