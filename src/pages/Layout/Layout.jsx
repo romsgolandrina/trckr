@@ -4,8 +4,8 @@ import {
   MdDashboard,
   MdBallot,
   MdBorderColor,
-  MdOutlineBrightness5,
-  MdOutlineBrightness2,
+  MdOutlineLightMode,
+  MdOutlineDarkMode,
 } from "react-icons/md";
 import { useUser } from "../../context/UserInput";
 import { getGreeting } from "../../utils/getGreeting";
@@ -13,7 +13,7 @@ import { getGreeting } from "../../utils/getGreeting";
 const Layout = () => {
   const NavLinks = [
     { label: "Dashboard", path: "/dashboard", logo: MdDashboard },
-    { label: "Application", path: "/application", logo: MdBallot },
+    { label: "Job Tracker", path: "/jobtracker", logo: MdBallot },
     { label: "Resources", path: "/resources", logo: MdBorderColor },
   ];
 
@@ -34,7 +34,7 @@ const Layout = () => {
     <div className="w-full h-screen transition-all duration-300 bg-[#fefffe]">
       <div className="h-full flex flex-row">
         {/* Sidebar */}
-        <div className="w-[290px] h-full flex flex-col py-6 px-4 justify-between overflow-hidden">
+        <div className="w-[290px] h-full flex flex-col py-6 justify-between overflow-hidden border-r-1 border-neutral-200">
           <div className="flex flex-col">
             {/* Logo */}
             <h1 className="text-5xl text-center text-[#222222] font-ubuntu font-bold">
@@ -42,10 +42,10 @@ const Layout = () => {
             </h1>
 
             {/* Divider */}
-            <div className="my-10 border-t-2 border-neutral-100" />
+            <div className="my-10 border-t-1 border-neutral-200" />
 
             {/* Navigation Links */}
-            <ul className="text-sm text-[#222222] flex flex-col gap-4">
+            <ul className="text-sm text-[#222222] flex flex-col gap-4 px-6">
               {NavLinks.map(({ label, path, logo: Logo }) => (
                 <a
                   key={path}
@@ -58,18 +58,19 @@ const Layout = () => {
               ))}
             </ul>
           </div>
+
           <div className="flex flex-col">
             {/* Divider */}
-            <div className="my-8 border-t-2 border-neutral-100" />
+            <div className="my-8 border-t-1 border-neutral-200" />
 
-            <div className="flex flex-row items-center justify-between px-4">
+            <div className="flex flex-row items-center justify-between px-6">
               <div className="flex flex-col text-sm text-[#222222] font-montserrat">
                 {/* Users Name and desired Position */}
                 <div
                   className="tooltip"
                   data-tip={`${userData.firstName} ${userData.lastName}`}
                 >
-                  <h1 className="text-[#222222] truncate w-40 cursor-pointer">
+                  <h1 className="text-[#222222] truncate w-40 cursor-pointer font-semibold">
                     {userData.firstName}&nbsp;
                     {userData.lastName}
                   </h1>
@@ -82,15 +83,16 @@ const Layout = () => {
                 <input type="checkbox" />
 
                 {/* sun icon */}
-                <MdOutlineBrightness5 size={20} className="swap-on" />
+                <MdOutlineLightMode size={20} className="swap-on" />
 
                 {/* moon icon */}
-                <MdOutlineBrightness2 size={20} className="swap-off" />
+                <MdOutlineDarkMode size={20} className="swap-off" />
               </label>
             </div>
           </div>
         </div>
-        <div className="flex-1 h-full flex flex-col bg-[#fafbfb] py-6 px-8 gap-4 overflow-auto">
+
+        <div className="flex-1 max-w-screen-xl mx-auto h-full flex flex-col bg-[#fafbfb] py-5 gap-4 overflow-auto">
           <div className="font-montserrat">
             <h1 className="text-4xl text-[#222222] font-bold">
               {greeting}, {userData.firstName}👋
