@@ -42,10 +42,10 @@ const Layout = () => {
             </h1>
 
             {/* Divider */}
-            <div className="my-10 border-t-1 border-neutral-200" />
+            <div className="my-8 border-t-1 border-neutral-200" />
 
             {/* Navigation Links */}
-            <ul className="text-sm text-[#222222] flex flex-col gap-4 px-6">
+            <ul className="text-sm text-[#222222] flex flex-col gap-3 px-6">
               {NavLinks.map(({ label, path, logo: Logo }) => (
                 <a
                   key={path}
@@ -61,7 +61,7 @@ const Layout = () => {
 
           <div className="flex flex-col">
             {/* Divider */}
-            <div className="my-8 border-t-1 border-neutral-200" />
+            <div className="my-6 border-t-1 border-neutral-200" />
 
             <div className="flex flex-row items-center justify-between px-6">
               <div className="flex flex-col text-sm text-[#222222] font-montserrat">
@@ -92,21 +92,31 @@ const Layout = () => {
           </div>
         </div>
 
-        <div className="flex-1 max-w-screen-xl mx-auto h-full flex flex-col bg-[#fafbfb] py-5 gap-4 overflow-auto">
-          <div className="font-montserrat">
-            <h1 className="text-4xl text-[#222222] font-bold">
-              {greeting}, {userData.firstName}👋
-            </h1>
-            <p className="text-lg text-neutral-400">
-              Welcome to your jobs dashboard
-            </p>
+        {/* Contents */}
+        <div className="flex-1 bg-[#fafbfb] font-montserrat">
+          <div className="max-w-screen-2xl mx-auto h-full flex flex-col overflow-auto">
+            {/* Greetings Header */}
+            <div className="w-full h-28 flex flex-col items-left justify-center">
+              <h1 className="text-4xl text-[#222222] font-bold">
+                {greeting}, {userData.firstName} 👋
+              </h1>
+              <p className="text-lg text-neutral-400">
+                Welcome to your jobs dashboard
+              </p>
+            </div>
+            {/* Pages */}
+            <div className="flex-1">
+              <div className="w-full h-full">
+                <Outlet />
+              </div>
+            </div>
+            {/* Footer */}
+            <div className="flex items-center justify-center py-3">
+              <h1 className="text-sm text-neutral-400">
+                ©2025 Jhon Rommel JR Golandrina. All rights reserved.
+              </h1>
+            </div>
           </div>
-          <div className="w-full h-full">
-            <Outlet />
-          </div>
-          <h1 className="text-center text-sm text-neutral-400 font-montserrat">
-            ©2025 Jhon Rommel Golandrina. All rights reserved.
-          </h1>
         </div>
       </div>
     </div>
