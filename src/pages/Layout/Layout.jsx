@@ -50,7 +50,7 @@ const Layout = () => {
                 <a
                   key={path}
                   href={path}
-                  className="w-full gap-3 font-montserrat text-normal font-semibold px-4 py-2 text-[#222222] hover:text-white hover:bg-[#222222] rounded-lg cursor-pointer flex items-center"
+                  className="w-full gap-3 font-montserrat text-base font-semibold px-4 py-2 text-[#222222] hover:text-white hover:bg-[#222222] rounded-lg cursor-pointer flex items-center"
                 >
                   <Logo size={25} />
                   <span className="">{label}</span>
