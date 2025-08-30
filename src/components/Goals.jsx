@@ -41,8 +41,8 @@ const Goals = () => {
           <h1 className="text-base text-neutral-400">20% completed</h1>
         </div>
       </div>
-      <div className="w-[50%] h-full flex items-center justify-center ">
-        <div className="flex flex-col items-start gap-6 py-6 px-4 rounded-lg text-[#222222]">
+      <div className="w-[50%] h-full flex items-center justify-center">
+        <div className="h-full flex flex-col items-start justify-between py-8 px-4 rounded-lg text-[#222222]">
           <div className="flex flex-col gap-1">
             <h1 className="text-xl font-bold flex items-center gap-1">
               <GoGoal />
@@ -53,10 +53,12 @@ const Goals = () => {
               track! 🚀
             </h1>
           </div>
-          <button className="bg-blue-500 text-white px-4 py-2 text-base font-semibold flex items-center gap-2 rounded-sm cursor-pointer hover:bg-[#222222] hover:text-white">
-            <IoMdAdd size={20} />
-            Add goal
-          </button>
+          <div className="">
+            <button className="bg-blue-500 text-white px-4 py-2 text-base font-semibold flex items-center gap-2 rounded-sm cursor-pointer hover:bg-[#222222] hover:text-white">
+              <IoMdAdd size={20} />
+              Add goal
+            </button>
+          </div>
         </div>
       </div>
     </div>

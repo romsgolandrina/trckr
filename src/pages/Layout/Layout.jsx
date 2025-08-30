@@ -30,6 +30,15 @@ const Layout = () => {
     return () => clearInterval(interval);
   }, []);
 
+  const [date, setDate] = useState(new Date());
+
+  useEffect(() => {
+    const timer = setInterval(() => setDate(new Date()), 1000);
+    return function cleanup() {
+      clearInterval(timer);
+    };
+  });
+
   return (
     <div className="w-full h-screen transition-all duration-300 bg-[#fefffe]">
       <div className="h-full flex flex-row">
@@ -94,15 +103,39 @@ const Layout = () => {
 
         {/* Contents */}
         <div className="flex-1 bg-[#fafbfb] font-montserrat">
-          <div className="max-w-screen-2xl mx-auto h-full flex flex-col overflow-auto">
+          <div className="max-w-screen-2xl mx-auto h-full flex flex-col">
             {/* Greetings Header */}
-            <div className="w-full h-28 flex flex-col items-left justify-center">
-              <h1 className="text-4xl text-[#222222] font-bold">
-                {greeting}, {userData.firstName} 👋
-              </h1>
-              <p className="text-lg text-neutral-400">
-                Welcome to your jobs dashboard
-              </p>
+            <div className="w-full h-28 flex flex-row items-center justify-between">
+              <div className="w-1/2 h-full flex flex-col justify-center">
+                <h1 className="text-4xl text-[#222222] font-bold">
+                  {greeting}, {userData.firstName} 👋
+                </h1>
+                <p className="text-lg text-neutral-400">
+                  Welcome to your jobs dashboard
+                </p>
+              </div>
+              {/* Realtime Local Date & Time */}
+              <div className="flex flex-col gap-2 h-full py-6">
+                <div className="flex flex-row text-[#222222] text-base font-semibold">
+                  <div>
+                    {date
+                      .toLocaleDateString("en-GB", {
+                        weekday: "long",
+                        day: "2-digit",
+                        month: "long",
+                        year: "numeric",
+                      })
+                      .replace(/^(\w+)/, "$1,")}
+                  </div>
+                  <div className="divider divider-horizontal divider-neutral" />
+                  <div>
+                    {date.toLocaleTimeString("en-US", {
+                      hour: "2-digit",
+                      minute: "2-digit",
+                    })}
+                  </div>
+                </div>
+              </div>
             </div>
             {/* Pages */}
             <div className="flex-1">

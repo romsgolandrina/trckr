@@ -11,7 +11,9 @@ const Dashboard = () => {
           <Goals />
         </div>
         {/* Jobs Applied */}
-        <div className="w-[60%] h-full border-1 border-neutral-200 rounded-lg"></div>
+        <div className="w-[60%] h-full border-1 border-neutral-200 rounded-lg">
+          
+        </div>
       </div>
       {/* Second Div */}
       <div className="w-full h-[60%] border-1 border-neutral-200 rounded-lg"></div>
