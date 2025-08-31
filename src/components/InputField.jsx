@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useUser } from "../context/UserInput";
+import { useAppLoading } from "../App"; // Import the loading function
 
 const InputField = () => {
   const { userData, setUserData } = useUser();
+  const { startAppLoading } = useAppLoading(); // Get the loading function
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
@@ -17,7 +19,14 @@ const InputField = () => {
       setError("Please fill in all fields");
       return;
     }
-    navigate("/dashboard");
+
+    // Trigger the app loading
+    startAppLoading();
+
+    // Navigate to dashboard after loading completes (match the timing from App.js)
+    setTimeout(() => {
+      navigate("/dashboard");
+    }, 2000); // This should match the loading time in App.js
   };
 
   return (

@@ -78,9 +78,9 @@ const StyledWrapper = styled.div`
     height: 8px;
     background: linear-gradient(
       to right,
-      rgb(161, 94, 255),
-      rgb(217, 190, 255),
-      rgb(161, 94, 255)
+      rgba(34, 34, 34, 1),
+      rgba(189, 201, 195, 1),
+      rgba(34, 34, 34, 1)
     );
     background-size: 200% 100%;
     border-radius: 10px;
@@ -115,10 +115,10 @@ const StyledWrapper = styled.div`
   }
   .svgIcon circle,
   line {
-    stroke: rgb(162, 55, 255);
+    stroke: rgba(34, 34, 34, 1);
   }
   .svgIcon circle {
-    fill: rgba(98, 65, 142, 0.238);
+    fill: rgba(34, 34, 34, 0.238);
   }
 `;
 

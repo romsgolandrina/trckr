@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Outlet } from "react-router-dom";
+import { Outlet, Link } from "react-router-dom";
 import {
   MdDashboard,
   MdBallot,
@@ -56,14 +56,14 @@ const Layout = () => {
             {/* Navigation Links */}
             <ul className="text-sm text-[#222222] flex flex-col gap-3 px-6">
               {NavLinks.map(({ label, path, logo: Logo }) => (
-                <a
+                <Link
                   key={path}
-                  href={path}
+                  to={path}
                   className="w-full gap-3 font-montserrat text-base font-semibold px-4 py-2 text-[#222222] hover:text-white hover:bg-[#222222] rounded-lg cursor-pointer flex items-center"
                 >
                   <Logo size={25} />
                   <span className="">{label}</span>
-                </a>
+                </Link>
               ))}
             </ul>
           </div>
