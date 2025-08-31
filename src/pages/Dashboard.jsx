@@ -1,9 +1,10 @@
 import React from "react";
 import Goals from "../components/Goals";
+import JobsApplied from "../components/JobsApplied";
 
 const Dashboard = () => {
   return (
-    <div className="w-full h-full flex flex-col overflow-y-auto gap-3">
+    <div className="w-full h-full flex flex-col gap-3">
       {/* First Div */}
       <div className="w-full h-[40%] flex flex-row gap-3">
         {/* Goals */}
@@ -11,8 +12,8 @@ const Dashboard = () => {
           <Goals />
         </div>
         {/* Jobs Applied */}
-        <div className="w-[60%] h-full border-1 border-neutral-200 rounded-lg">
-          
+        <div className="w-[60%] h-full border-1 border-neutral-200 rounded-lg p-8">
+          <JobsApplied />
         </div>
       </div>
       {/* Second Div */}
