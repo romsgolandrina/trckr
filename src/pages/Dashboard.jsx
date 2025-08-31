@@ -1,6 +1,7 @@
 import React from "react";
 import Goals from "../components/Goals";
 import JobsApplied from "../components/JobsApplied";
+import LineChart from "../components/lineChart";
 
 const Dashboard = () => {
   return (
@@ -17,7 +18,12 @@ const Dashboard = () => {
         </div>
       </div>
       {/* Second Div */}
-      <div className="w-full h-[60%] border-1 border-neutral-200 rounded-lg"></div>
+      <div className="w-full h-[60%] flex flex-row rounded-lg gap-3">
+        <div className="w-[55%] h-full border-1 border-neutral-200 rounded-lg p-6">
+          <LineChart />
+        </div>
+        <div className="w-[45%] h-full border-1 border-neutral-200 rounded-lg"></div>
+      </div>
     </div>
   );
 };
