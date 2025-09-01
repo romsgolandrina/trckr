@@ -146,7 +146,7 @@ const Layout = () => {
             {/* Footer */}
             <div className="flex items-center justify-center py-3">
               <h1 className="text-sm text-neutral-400">
-                ©2025 Jhon Rommel JR Golandrina. All rights reserved.
+                © 2025 Jhon Rommel JR Golandrina. All rights reserved.
               </h1>
             </div>
           </div>

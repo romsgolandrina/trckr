@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -72,10 +72,22 @@ const lineChart = () => {
     },
   };
 
+  const [date, setDate] = useState(new Date());
+
+  useEffect(() => {
+    const timer = setInterval(() => setDate(new Date()), 1000);
+    return function cleanup() {
+      clearInterval(timer);
+    };
+  });
+
   return (
     <div>
       <h1 className="text-[#222222] flex flex-col gap-1 font-bold text-xl">
-        Yearly Applications
+        Monthly Applications - {""}
+        {date.toLocaleDateString("en-GB", {
+          year: "numeric",
+        })}
       </h1>
       <Line data={data} options={options} />
     </div>

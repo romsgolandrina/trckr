@@ -1,7 +1,7 @@
 import React from "react";
-import Goals from "../components/Goals";
-import JobsApplied from "../components/JobsApplied";
-import LineChart from "../components/lineChart";
+import Goals from "../components/Dashboard/Goals";
+import JobsApplied from "../components/Dashboard/JobsApplied";
+import LineChart from "../components/Dashboard/lineChart";
 
 const Dashboard = () => {
   return (
