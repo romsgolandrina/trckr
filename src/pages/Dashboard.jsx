@@ -2,6 +2,7 @@ import React from "react";
 import Goals from "../components/Dashboard/Goals";
 import JobsApplied from "../components/Dashboard/JobsApplied";
 import LineChart from "../components/Dashboard/lineChart";
+import ReminderNotes from "../components/Dashboard/ReminderNotes";
 
 const Dashboard = () => {
   return (
@@ -22,7 +23,9 @@ const Dashboard = () => {
         <div className="w-[55%] h-full border-1 border-neutral-200 rounded-lg p-6">
           <LineChart />
         </div>
-        <div className="w-[45%] h-full border-1 border-neutral-200 rounded-lg"></div>
+        <div className="w-[45%] h-full border-1 border-neutral-200 rounded-lg p-6">
+          <ReminderNotes />
+        </div>
       </div>
     </div>
   );
