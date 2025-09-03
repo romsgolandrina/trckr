@@ -8,7 +8,7 @@ const Dashboard = () => {
   return (
     <div className="w-full h-full flex flex-col gap-3">
       {/* First Div */}
-      <div className="w-full h-[40%] flex flex-row gap-3">
+      <div className="w-full flex-[2] flex flex-row gap-3">
         {/* Goals */}
         <div className="w-[40%] h-full border-1 border-neutral-200 rounded-lg flex items-center justify-center p-8">
           <Goals />
@@ -19,7 +19,7 @@ const Dashboard = () => {
         </div>
       </div>
       {/* Second Div */}
-      <div className="w-full h-[60%] flex flex-row rounded-lg gap-3">
+      <div className="w-full flex-[3] flex flex-row rounded-lg gap-3">
         <div className="w-[55%] h-full border-1 border-neutral-200 rounded-lg p-6">
           <LineChart />
         </div>
