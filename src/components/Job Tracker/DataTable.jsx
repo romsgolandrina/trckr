@@ -39,15 +39,15 @@ const DataTable = () => {
   const getStatusClasses = (status) => {
     switch (status) {
       case "Rejected":
-        return "bg-red-300 text-red-800";
+        return "bg-red-500 text-white";
       case "Interview":
-        return "bg-blue-200 text-blue-800";
+        return "bg-blue-500 text-white";
       case "Applied":
-        return "bg-gray-200 text-gray-800";
+        return "bg-gray-200 text-[#222222]";
       case "Offer":
-        return "bg-green-200 text-green-800";
+        return "bg-green-500 text-white";
       default:
-        return "bg-gray-200 text-gray-700";
+        return "bg-gray-500 text-gray-700";
     }
   };
 

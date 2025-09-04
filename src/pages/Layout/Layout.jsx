@@ -139,7 +139,7 @@ const Layout = () => {
             </div>
             {/* Pages */}
             <div className="flex-1">
-              <div className="w-full h-full">
+              <div className="w-full h-full font-montserrat">
                 <Outlet />
               </div>
             </div>
