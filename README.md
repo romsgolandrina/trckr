@@ -1,12 +1,55 @@
-# React + Vite
+# 📋 Job Tracker (trckr.)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A clean and modern web-based application to **track your job hunting journey**.  
+It helps you stay organized with a dashboard, reminders, filtering tools, and visual analytics powered by Chart.js.  
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## ✨ Features
 
-## Expanding the ESLint configuration
+### 🏠 Dashboard
+- Personalized greeting with date & time
+- Overview of job applications (Today, This Week, This Month, Total)
+- **Goal tracker** with progress indicator
+- **Monthly job applications chart** (Chart.js)
+- Reminder notes for interviews, deadlines, and tasks
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### 📝 Reminder Notes
+- Add personal reminders for applications
+- Organized list with due times and categories
+
+### 📊 Job Tracker
+- Log all job applications with:
+  - Company
+  - Position
+  - Date Applied
+  - Status (Applied, Interview, Offer, Rejected)
+  - Salary
+  - Location
+- Edit and delete entries
+- **Filter and search** applications easily
+- Pagination support for large datasets
+- **Export data** option for personal records
+
+### 🧩 State Management
+- Global state handled with **React Context API (`useContext`)**
+
+### 📈 Analytics
+- **Chart.js (via React Chart.js 2)** for visualizing application progress and trends
+
+---
+
+## 🛠️ Tech Stack
+- **React.js (Vite)** – Frontend framework
+- **React Context API (`useContext`)** – State management
+- **Chart.js + React Chart.js 2** – Data visualization
+- **Tailwind CSS + DaisyUI** – UI styling
+- **React Icons** – Icons for UI elements
+
+---
+
+## 📦 Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/your-username/job-tracker.git
