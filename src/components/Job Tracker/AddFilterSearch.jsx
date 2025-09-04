@@ -7,11 +7,11 @@ const AddFilterSearch = () => {
   return (
     <div className="w-full h-full flex flex-row items-center justify-between">
       <div className="w-1/2 flex flex-row gap-2 items-center">
-        <button className="h-10 py-2 px-4 bg-[#222222] text-white rounded-lg flex items-center gap-2 text-sm font-semibold">
+        <button className="h-10 py-2 px-4 bg-orange-500 text-white rounded-lg flex items-center gap-2 text-sm font-semibold border-0 hover:bg-[#222222] cursor-pointer">
           <IoMdAdd size={20} />
           Add New Application
         </button>
-        <button className="h-10 py-2 px-4 text-white rounded-lg flex items-center gap-2 text-sm bg-blue-500 font-semibold">
+        <button className="h-10 py-2 px-4 text-white rounded-lg flex items-center gap-2 text-sm bg-blue-500 font-semibold hover:bg-[#222222] cursor-pointer">
           <BsFileEarmarkBarGraph size={20} />
           Export Data
         </button>

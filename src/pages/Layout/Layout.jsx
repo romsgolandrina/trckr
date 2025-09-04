@@ -13,8 +13,8 @@ import { getGreeting } from "../../utils/getGreeting";
 const Layout = () => {
   const NavLinks = [
     { label: "Dashboard", path: "/dashboard", logo: MdDashboard },
-    { label: "Job Tracker", path: "/jobtracker", logo: MdBallot },
-    { label: "Resources", path: "/resources", logo: MdBorderColor },
+    { label: "Job Tracker", path: "/jobTracker", logo: MdBallot },
+    { label: "Resume Builder", path: "/resumeBuilder", logo: MdBorderColor },
   ];
 
   const { userData } = useUser();

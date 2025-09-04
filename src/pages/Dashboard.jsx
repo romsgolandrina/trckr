@@ -10,20 +10,20 @@ const Dashboard = () => {
       {/* First Div */}
       <div className="w-full flex-[2] flex flex-row gap-3">
         {/* Goals */}
-        <div className="w-[40%] h-full border-1 border-neutral-200 rounded-lg flex items-center justify-center p-8">
+        <div className="w-[40%] h-full border-1 border-neutral-200 rounded-lg flex items-center justify-center p-8 shadow-md">
           <Goals />
         </div>
         {/* Jobs Applied */}
-        <div className="w-[60%] h-full border-1 border-neutral-200 rounded-lg p-8">
+        <div className="w-[60%] h-full border-1 border-neutral-200 rounded-lg p-8 shadow-md">
           <JobsApplied />
         </div>
       </div>
       {/* Second Div */}
       <div className="w-full flex-[3] flex flex-row rounded-lg gap-3">
-        <div className="w-[55%] h-full border-1 border-neutral-200 rounded-lg p-6">
+        <div className="w-[55%] h-full border-1 border-neutral-200 rounded-lg p-6 shadow-md">
           <LineChart />
         </div>
-        <div className="w-[45%] h-full border-1 border-neutral-200 rounded-lg p-6">
+        <div className="w-[45%] h-full border-1 border-neutral-200 rounded-lg p-6 shadow-md">
           <ReminderNotes />
         </div>
       </div>

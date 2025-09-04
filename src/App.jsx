@@ -52,8 +52,8 @@ function App() {
               <Route index element={<LoginPage />} />
               <Route path="/" element={<Layout />}>
                 <Route path="/dashboard" element={<Dashboard />} />
-                <Route path="/jobtracker" element={<JobTracker />} />
-                <Route path="/resources" element={<Resources />} />
+                <Route path="/jobTracker" element={<JobTracker />} />
+                <Route path="/resumeBuilder" element={<Resources />} />
               </Route>
             </Routes>
           </Router>

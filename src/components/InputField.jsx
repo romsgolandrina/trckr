@@ -70,7 +70,7 @@ const InputField = () => {
       )}
       <button
         onClick={handleStartTracking}
-        className="btn btn-md w-[450px] rounded-lg bg-[#1B2122] border-0 hover:bg-[#384244]"
+        className="btn btn-md w-[450px] rounded-lg bg-[#222222] border-0 hover:bg-[#384244]"
       >
         Start Tracking
       </button>
