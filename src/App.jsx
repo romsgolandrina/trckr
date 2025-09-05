@@ -6,6 +6,7 @@ import JobTracker from "./pages/JobTracker";
 import Resources from "./pages/Resources";
 import Layout from "./pages/Layout/Layout";
 import Loader from "./components/loader/loader";
+import { UserApplication } from "./context/ApplicationsInput";
 
 // Create a simple context for app loading
 const AppLoadingContext = createContext();
@@ -42,24 +43,26 @@ function App() {
   };
 
   return (
-    <AppLoadingContext.Provider value={{ startAppLoading }}>
-      <div>
-        {initialLoading || appLoading ? (
-          <Loader />
-        ) : (
-          <Router>
-            <Routes>
-              <Route index element={<LoginPage />} />
-              <Route path="/" element={<Layout />}>
-                <Route path="/dashboard" element={<Dashboard />} />
-                <Route path="/jobTracker" element={<JobTracker />} />
-                <Route path="/resumeBuilder" element={<Resources />} />
-              </Route>
-            </Routes>
-          </Router>
-        )}
-      </div>
-    </AppLoadingContext.Provider>
+    <UserApplication>
+      <AppLoadingContext.Provider value={{ startAppLoading }}>
+        <div>
+          {initialLoading || appLoading ? (
+            <Loader />
+          ) : (
+            <Router>
+              <Routes>
+                <Route index element={<LoginPage />} />
+                <Route path="/" element={<Layout />}>
+                  <Route path="/dashboard" element={<Dashboard />} />
+                  <Route path="/jobTracker" element={<JobTracker />} />
+                  <Route path="/resumeBuilder" element={<Resources />} />
+                </Route>
+              </Routes>
+            </Router>
+          )}
+        </div>
+      </AppLoadingContext.Provider>
+    </UserApplication>
   );
 }
 

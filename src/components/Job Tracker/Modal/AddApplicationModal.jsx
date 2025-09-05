@@ -1,7 +1,53 @@
-import React from "react";
+import React, { useState } from "react";
+import { useUserApplication } from "../../../context/ApplicationsInput";
 
 const AddApplicationModal = ({ isVisible, onClose }) => {
+  const { addApplication } = useUserApplication();
+  const [formData, setFormData] = useState({
+    // ✅ Local form state
+    company: "",
+    jobPosition: "",
+    dateApplied: "",
+    status: "",
+    salary: "",
+    location: "",
+  });
+  const [error, setError] = useState("");
+
   if (!isVisible) return null;
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+    setError("");
+  };
+
+  const handleSaveApplication = () => {
+    if (
+      !formData.company ||
+      !formData.jobPosition ||
+      !formData.dateApplied ||
+      !formData.status ||
+      !formData.salary ||
+      !formData.location
+    ) {
+      setError("Please fill in all fields");
+      return;
+    }
+
+    // ✅ Add the application using context function
+    addApplication(formData);
+
+    setFormData({
+      company: "",
+      jobPosition: "",
+      dateApplied: "",
+      status: "",
+      salary: "",
+      location: "",
+    });
+
+    onClose();
+  };
 
   const appliStatus = [
     { Status: "Applied" },
@@ -15,6 +61,7 @@ const AddApplicationModal = ({ isVisible, onClose }) => {
       <div className="w-[500px] h-[700px] bg-white rounded-xl flex flex-col px-6 py-7 text-[#222222] shadow-md justify-between">
         <div>
           <h1 className="font-bold text-2xl">Add New Application</h1>
+          {error && <p className="text-red-500 text-sm mt-2">{error}</p>}
         </div>
         {/* Input Fields */}
         <div className="w-full flex flex-col gap-4">
@@ -23,6 +70,9 @@ const AddApplicationModal = ({ isVisible, onClose }) => {
               Company <span className="text-red-500">*</span>
             </span>
             <input
+              name="company"
+              value={formData.company}
+              onChange={handleChange}
               type="text"
               placeholder="e.g., John"
               className="input input-md w-[450px] bg-gray-200 focus:border-gray-400 focus:outline-none rounded-lg"
@@ -33,6 +83,9 @@ const AddApplicationModal = ({ isVisible, onClose }) => {
               Position Title <span className="text-red-500">*</span>
             </span>
             <input
+              name="jobPosition"
+              value={formData.jobPosition}
+              onChange={handleChange}
               type="text"
               placeholder="e.g., Front-end Developer"
               className="input input-md w-[450px] bg-gray-200 focus:border-gray-400 focus:outline-none rounded-lg"
@@ -44,6 +97,9 @@ const AddApplicationModal = ({ isVisible, onClose }) => {
               Date Applied <span className="text-red-500">*</span>
             </span>
             <input
+              name="dateApplied"
+              value={formData.dateApplied}
+              onChange={handleChange}
               type="date"
               className="input input-md w-[450px] bg-gray-200 focus:border-gray-400 focus:outline-none rounded-lg text-[#222222]"
             />
@@ -52,6 +108,9 @@ const AddApplicationModal = ({ isVisible, onClose }) => {
           <label className="flex flex-col gap-1">
             <span className="text-sm font-semibold">Status</span>
             <select
+              name="status"
+              value={formData.status}
+              onChange={handleChange}
               defaultValue="Status"
               className="select w-[450px] bg-gray-200 focus:border-gray-400 focus:outline-none rounded-lg"
             >
@@ -64,6 +123,9 @@ const AddApplicationModal = ({ isVisible, onClose }) => {
           <label className="flex flex-col gap-1">
             <span className="text-sm font-semibold">Salary</span>
             <input
+              name="salary"
+              value={formData.salary}
+              onChange={handleChange}
               type="text"
               placeholder="e.g., $120,000 - $300,000"
               className="input input-md w-[450px] bg-gray-200 focus:border-gray-400 focus:outline-none rounded-lg"
@@ -72,6 +134,9 @@ const AddApplicationModal = ({ isVisible, onClose }) => {
           <label className="flex flex-col gap-1">
             <span className="text-sm font-semibold">Location</span>
             <input
+              name="location"
+              value={formData.location}
+              onChange={handleChange}
               type="text"
               placeholder="e.g., Remote, California"
               className="input input-md w-[450px] bg-gray-200 focus:border-gray-400 focus:outline-none rounded-lg"
@@ -87,7 +152,10 @@ const AddApplicationModal = ({ isVisible, onClose }) => {
           >
             Cancel
           </button>
-          <button className="py-3 px-5 rounded-lg border-1 border-neutral-200 bg-[#222222] text-white hover:bg-blue-500 cursor-pointer font-semibold text-sm">
+          <button
+            onClick={handleSaveApplication}
+            className="py-3 px-5 rounded-lg border-1 border-neutral-200 bg-[#222222] text-white hover:bg-blue-500 cursor-pointer font-semibold text-sm"
+          >
             Save Application
           </button>
         </div>
