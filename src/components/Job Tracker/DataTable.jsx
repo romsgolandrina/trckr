@@ -1,62 +1,15 @@
 import React from "react";
-import { useUserApplication } from "../../context/ApplicationsInput"; // Adjust path as needed
+import { useUserApplication } from "../../context/ApplicationsInput";
 
 const DataTable = () => {
-  const { jobTrack, deleteApplication } = useUserApplication();
+  const { jobTrack, deleteApplication, updateApplication } =
+    useUserApplication();
 
-  // Fallback data if no applications exist yet
-  const fallbackApplications = [
-    {
-      company: "Google",
-      jobPosition: "Software Engineer",
-      dateApplied: "2025-09-01",
-      status: "Interview",
-      salary: "$150,000 - $200,000",
-      location: "Remote",
-    },
-    {
-      company: "Amazon AWS",
-      jobPosition: "Front-end Developer",
-      dateApplied: "2025-09-01",
-      status: "Applied",
-      salary: "$120,000 - $300,000",
-      location: "NYC",
-    },
-    {
-      company: "Oracle",
-      jobPosition: "QA Engineer",
-      dateApplied: "2025-08-27",
-      status: "Offer",
-      salary: "$90,000 - $100,000",
-      location: "LA California",
-    },
-    {
-      company: "Riot Games",
-      jobPosition: "Game Developer",
-      dateApplied: "2025-04-10",
-      status: "Rejected",
-      salary: "$190,000 - $300,000",
-      location: "China",
-    },
-  ];
-
-  // Use context data if available, otherwise show fallback
-  const displayApplications =
-    jobTrack.length > 0 ? jobTrack : fallbackApplications;
-
-  const getStatusClasses = (status) => {
-    switch (status) {
-      case "Rejected":
-        return "bg-red-500 text-white";
-      case "Interview":
-        return "bg-blue-500 text-white";
-      case "Applied":
-        return "bg-gray-200 text-[#222222]";
-      case "Offer":
-        return "bg-green-500 text-white";
-      default:
-        return "bg-gray-500 text-gray-700";
-    }
+  const STATUS_COLORS = {
+    Rejected: "bg-red-500 text-white",
+    Interview: "bg-blue-500 text-white",
+    Applied: "bg-gray-200 text-gray-800",
+    Offer: "bg-green-500 text-white",
   };
 
   const formatDate = (dateString) => {
@@ -76,26 +29,54 @@ const DataTable = () => {
   };
 
   const handleEdit = (index) => {
-    // TODO: Implement edit functionality
-    console.log("Edit application at index:", index);
-    alert("Edit functionality coming soon!");
+    if (alert("Successfully updated the Application!")) {
+      updateApplication(index);
+    }
   };
+
+  // Display/Edit/Delete Data
+  const getApplicationData = (application) => ({
+    company: application.company || application.Company || "",
+    position: application.jobPosition || application.Position || "",
+    dateApplied: application.dateApplied || application.DateApplied || "",
+    status: application.status || application.Status || "",
+    salary: application.salary || application.Salary || "",
+    location: application.location || application.Location || "",
+  });
+
+  // Show "No Data" message when there are no applications
+  if (!jobTrack || jobTrack.length === 0) {
+    return (
+      <div className="w-full h-full flex flex-col items-center justify-center py-12">
+        <div className="text-center">
+          <div className="mb-4">
+            <svg
+              className="w-16 h-16 mx-auto text-gray-300"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={1.5}
+                d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+              />
+            </svg>
+          </div>
+          <h3 className="text-lg font-medium text-gray-900 mb-2">
+            No Applications Found
+          </h3>
+          <p className="text-gray-500 text-sm">
+            Start tracking your job applications by adding your first one!
+          </p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="w-full h-full flex flex-col gap-3">
-      {/* Show context status */}
-      <div className="text-sm text-gray-600 mb-2">
-        {jobTrack.length > 0 ? (
-          <span className="text-green-600">
-            ✅ Showing {jobTrack.length} applications from your data
-          </span>
-        ) : (
-          <span className="text-blue-600">
-            ℹ️ Showing sample data - add applications to see your own data
-          </span>
-        )}
-      </div>
-
       {/* Table */}
       <div className="overflow-x-auto rounded-box border-1 border-neutral-300 rounded-lg shadow-md">
         <table className="table">
@@ -111,34 +92,28 @@ const DataTable = () => {
             </tr>
           </thead>
           <tbody>
-            {displayApplications.map((application, index) => {
-              // Handle both old format (Capital case) and new format (camelCase)
-              const company = application.company || application.Company;
-              const position = application.jobPosition || application.Position;
-              const dateApplied =
-                application.dateApplied || application.DateApplied;
-              const status = application.status || application.Status;
-              const salary = application.salary || application.Salary;
-              const location = application.location || application.Location;
-
+            {jobTrack.map((application, index) => {
+              const data = getApplicationData(application);
               return (
                 <tr key={index}>
                   <td className="flex flex-col gap-1">
-                    <span className="font-medium">{position}</span>
-                    <span className="text-[12px] text-gray-600">{company}</span>
-                  </td>
-                  <td>{formatDate(dateApplied)}</td>
-                  <td>
-                    <span
-                      className={`py-1 px-3 rounded-xl text-sm font-medium ${getStatusClasses(
-                        status
-                      )}`}
-                    >
-                      {status}
+                    <span className="font-medium">{data.position}</span>
+                    <span className="text-[12px] text-gray-600">
+                      {data.company}
                     </span>
                   </td>
-                  <td>{salary}</td>
-                  <td>{location}</td>
+                  <td>{formatDate(data.dateApplied)}</td>
+                  <td>
+                    <span
+                      className={`py-1 px-3 rounded-xl text-sm font-medium ${
+                        STATUS_COLORS[data.status] || "bg-gray-500 text-white"
+                      }`}
+                    >
+                      {data.status}
+                    </span>
+                  </td>
+                  <td>{data.salary}</td>
+                  <td>{data.location}</td>
                   <td className="flex flex-row gap-2">
                     {jobTrack.length > 0 && (
                       <>
@@ -158,11 +133,6 @@ const DataTable = () => {
                         </button>
                       </>
                     )}
-                    {jobTrack.length === 0 && (
-                      <span className="text-xs text-gray-400 px-2 py-1">
-                        Sample data
-                      </span>
-                    )}
                   </td>
                 </tr>
               );
@@ -170,27 +140,6 @@ const DataTable = () => {
           </tbody>
         </table>
       </div>
-
-      {/* Statistics */}
-      {jobTrack.length > 0 && (
-        <div className="flex gap-4 text-sm">
-          <span className="bg-blue-100 text-blue-800 px-2 py-1 rounded">
-            Applied: {jobTrack.filter((app) => app.status === "Applied").length}
-          </span>
-          <span className="bg-yellow-100 text-yellow-800 px-2 py-1 rounded">
-            Interview:{" "}
-            {jobTrack.filter((app) => app.status === "Interview").length}
-          </span>
-          <span className="bg-green-100 text-green-800 px-2 py-1 rounded">
-            Offer: {jobTrack.filter((app) => app.status === "Offer").length}
-          </span>
-          <span className="bg-red-100 text-red-800 px-2 py-1 rounded">
-            Rejected:{" "}
-            {jobTrack.filter((app) => app.status === "Rejected").length}
-          </span>
-        </div>
-      )}
-
       {/* Pagination */}
       <div className="w-full flex flex-row items-center justify-end">
         <div className="join [&_.btn]:bg-neutral-100 [&_.btn]:text-[#222222] [&_.btn]:border-1 [&_.btn]:border-neutral-300  [&_.btn]:shadow-none">

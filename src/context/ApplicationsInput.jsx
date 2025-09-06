@@ -16,7 +16,7 @@ export const UserApplication = ({ children }) => {
     localStorage.setItem("jobTrack", JSON.stringify(jobTrack));
   }, [jobTrack]);
 
-  // ✅ Add a new application
+  // Add a new application
   const addApplication = (application) => {
     setJobTrack((prev) => [
       ...prev,
@@ -27,19 +27,19 @@ export const UserApplication = ({ children }) => {
         status: "",
         salary: "",
         location: "",
-        ...application, // overwrite with provided values
+        ...application,
       },
     ]);
   };
 
-  // ✅ Update an existing application by index
+  // Update an existing application
   const updateApplication = (index, updatedApp) => {
     setJobTrack((prev) =>
       prev.map((app, i) => (i === index ? { ...app, ...updatedApp } : app))
     );
   };
 
-  // ✅ Delete an application by index
+  // Delete an application
   const deleteApplication = (index) => {
     setJobTrack((prev) => prev.filter((_, i) => i !== index));
   };

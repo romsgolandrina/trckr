@@ -3,15 +3,19 @@ import { useUserApplication } from "../../../context/ApplicationsInput";
 
 const AddApplicationModal = ({ isVisible, onClose }) => {
   const { addApplication } = useUserApplication();
-  const [formData, setFormData] = useState({
-    // ✅ Local form state
+
+  const INITIAL_FORM_STATE = {
     company: "",
     jobPosition: "",
     dateApplied: "",
     status: "",
     salary: "",
     location: "",
-  });
+  };
+
+  const APPLICATION_STATUSES = ["Applied", "Interview", "Offer", "Rejected"];
+
+  const [formData, setFormData] = useState(INITIAL_FORM_STATE);
   const [error, setError] = useState("");
 
   if (!isVisible) return null;
@@ -34,27 +38,12 @@ const AddApplicationModal = ({ isVisible, onClose }) => {
       return;
     }
 
-    // ✅ Add the application using context function
     addApplication(formData);
 
-    setFormData({
-      company: "",
-      jobPosition: "",
-      dateApplied: "",
-      status: "",
-      salary: "",
-      location: "",
-    });
+    setFormData(INITIAL_FORM_STATE);
 
     onClose();
   };
-
-  const appliStatus = [
-    { Status: "Applied" },
-    { Status: "Interview" },
-    { Status: "Offer" },
-    { Status: "Rejected" },
-  ];
 
   return (
     <div className="fixed inset-0 bg-black/25 backdrop-blur-[2px] flex justify-center items-center z-9999">
@@ -91,7 +80,6 @@ const AddApplicationModal = ({ isVisible, onClose }) => {
               className="input input-md w-[450px] bg-gray-200 focus:border-gray-400 focus:outline-none rounded-lg"
             />
           </label>
-
           <label className="flex flex-col gap-1">
             <span className="text-sm font-semibold">
               Date Applied <span className="text-red-500">*</span>
@@ -104,7 +92,6 @@ const AddApplicationModal = ({ isVisible, onClose }) => {
               className="input input-md w-[450px] bg-gray-200 focus:border-gray-400 focus:outline-none rounded-lg text-[#222222]"
             />
           </label>
-
           <label className="flex flex-col gap-1">
             <span className="text-sm font-semibold">Status</span>
             <select
@@ -112,14 +99,15 @@ const AddApplicationModal = ({ isVisible, onClose }) => {
               value={formData.status}
               onChange={handleChange}
               defaultValue="Status"
-              className="select w-[450px] bg-gray-200 focus:border-gray-400 focus:outline-none rounded-lg"
+              className="select w-[450px] bg-gray-200 focus:border-gray-400 focus:outline-none rounded-lg text-[#222222]"
             >
-              {appliStatus.map(({ Status }) => (
-                <option>{Status}</option>
+              {APPLICATION_STATUSES.map((status) => (
+                <option className="text-black" key={status} value={status}>
+                  {status}
+                </option>
               ))}
             </select>
           </label>
-
           <label className="flex flex-col gap-1">
             <span className="text-sm font-semibold">Salary</span>
             <input
@@ -143,7 +131,6 @@ const AddApplicationModal = ({ isVisible, onClose }) => {
             />
           </label>
         </div>
-
         {/* Buttons */}
         <div className="w-full flex flex-row items-center justify-end gap-2">
           <button
