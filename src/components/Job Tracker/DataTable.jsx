@@ -1,5 +1,6 @@
 import React from "react";
 import { useUserApplication } from "../../context/ApplicationsInput";
+import Swal from "sweetalert2";
 
 const DataTable = () => {
   const { jobTrack, deleteApplication, updateApplication } =
@@ -23,9 +24,20 @@ const DataTable = () => {
   };
 
   const handleDelete = (index) => {
-    if (window.confirm("Are you sure you want to delete this application?")) {
-      deleteApplication(index);
-    }
+    Swal.fire({
+      title: "Are you sure?",
+      text: "This application will be permanently deleted.",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        deleteApplication(index);
+        Swal.fire("Deleted!", "Your application has been deleted.", "success");
+      }
+    });
   };
 
   const handleEdit = (index) => {
@@ -36,15 +48,14 @@ const DataTable = () => {
 
   // Display/Edit/Delete Data
   const getApplicationData = (application) => ({
-    company: application.company || application.Company || "",
-    position: application.jobPosition || application.Position || "",
-    dateApplied: application.dateApplied || application.DateApplied || "",
-    status: application.status || application.Status || "",
-    salary: application.salary || application.Salary || "",
-    location: application.location || application.Location || "",
+    company: application.company || "",
+    position: application.jobPosition || "",
+    dateApplied: application.dateApplied || "",
+    status: application.status || "",
+    salary: application.salary || "",
+    location: application.location || "",
   });
 
-  // Show "No Data" message when there are no applications
   if (!jobTrack || jobTrack.length === 0) {
     return (
       <div className="w-full h-full flex flex-col items-center justify-center py-12">

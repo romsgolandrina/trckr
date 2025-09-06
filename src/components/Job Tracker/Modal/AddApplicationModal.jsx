@@ -101,6 +101,9 @@ const AddApplicationModal = ({ isVisible, onClose }) => {
               defaultValue="Status"
               className="select w-[450px] bg-gray-200 focus:border-gray-400 focus:outline-none rounded-lg text-[#222222]"
             >
+              <option value="" disabled>
+                Select status
+              </option>
               {APPLICATION_STATUSES.map((status) => (
                 <option className="text-black" key={status} value={status}>
                   {status}
