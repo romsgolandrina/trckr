@@ -5,7 +5,7 @@ import Dashboard from "./pages/Dashboard";
 import JobTracker from "./pages/JobTracker";
 import Resources from "./pages/Resources";
 import Layout from "./pages/Layout/Layout";
-import Loader from "./components/loader/loader";
+import Loader from "./components/loader/Loader";
 import { UserApplication } from "./context/ApplicationsInput";
 
 // Create a simple context for app loading
