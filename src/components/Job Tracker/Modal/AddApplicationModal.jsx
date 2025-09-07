@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useUserApplication } from "../../../context/ApplicationsInput";
+import Swal from "sweetalert2";
 
 const AddApplicationModal = ({ isVisible, onClose }) => {
   const { addApplication } = useUserApplication();
@@ -37,7 +38,10 @@ const AddApplicationModal = ({ isVisible, onClose }) => {
       setError("Please fill in all fields");
       return;
     }
-
+    Swal.fire({
+      title: "Succesfully Added",
+      icon: "success",
+    });
     addApplication(formData);
 
     setFormData(INITIAL_FORM_STATE);
